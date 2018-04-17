@@ -1,0 +1,11 @@
+#process of trinity result
+bwa mem ../gencode.v28.transcripts.fa Trinity.fasta > Trinity.sam
+samtools view -b Trinity.sam > Trinity.bam
+samtools sort Trinity.bam -o Trinity.sort.bam
+samtools rmdup -s Trinity.sort.bam Trinity.rmdup.bam
+samtools view Trinity.rmdup.bam > Trinity.rmdup.sam
+cat Trinity.rmdup.sam | awk '{if($3~/TR_V_gene/) print $_}' > Trinity_TRV.sam
+cat Trinity.rmdup.sam | awk '{if($3~/IG_V_gene/) print $_}' > Trinity_IGV.sam
+cat Trinity_TRV.sam | awk '{print $3"\t"$4"\t"$10}' > Trinity_TRV_1.seq
+cat Trinity_TRV_1.seq | awk '{print $1}' | uniq > Trinity_TRV_1.name
+cat Trinity.rmdup.sam | awk '{print $3}' | uniq > Trinity_ALL.name

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+cat genes.read_group_tracking | awk '{if($1!~"tracking_id")print $1"\t"$2"_"$3"\t"$7}' > genes.fpkm_list
+cat genes.fpkm_list | awk '{print$2}' > samples_all.fpkm_list
+sort -u samples_all.fpkm_list > samples.fpkm_list
+rm samples_all.fpkm_list
+cat genes.fpkm_list | awk '{print$1}' > names_all.fpkm_list
+uniq names_all.fpkm_list > names.fpkm_list
+rm names_all.fpkm_list
+echo "Genes" > names_header.txt
+cat names_header.txt names.fpkm_list > table.fpkm_list
+rm names_header.txt
+
+while read line;
+do
+echo $line > single_header.txt
+cat genes.fpkm_list | awk -v pat="$line" '{if($2==pat)print $3}' > single_fpkm.txt
+#cat genes.fpkm_list | awk '{if(match($2,line)) print $2}'
+cat single_header.txt single_fpkm.txt > single_data.txt
+paste table.fpkm_list single_data.txt > table.fpkm_list_new
+mv table.fpkm_list_new table.fpkm_list
+done < samples.fpkm_list
+

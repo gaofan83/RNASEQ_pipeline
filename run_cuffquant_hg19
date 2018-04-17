@@ -1,0 +1,14 @@
+#!/bin/bash
+export PATH=/home/fangao/bowtie2-2.2.3:$PATH
+export PATH=/home/fangao/bowtie-1.0.0:$PATH
+export PATH=/home/fangao/tophat-2.0.12.Linux_x86_64:$PATH
+export PATH=/home/fangao/samtools-0.1.18:$PATH
+export PATH=/home/fangao/cufflinks-2.2.1.Linux_x86_64:$PATH
+
+while read line;
+do
+ext=".hg19Aligned.sortedByCoord.out.bam"
+file=$line$ext
+cuffquant -o ./cuffquant_hg19_$line -p 16 --library-type fr-firststrand /home/fangao/Homo_sapiens/UCSC/hg19/Annotation/Archives/archive-2013-03-06-11-23-03/Genes/genes.gtf $file
+done < sample_ID.txt
+

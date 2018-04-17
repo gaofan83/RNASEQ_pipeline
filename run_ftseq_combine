@@ -1,0 +1,20 @@
+#!/bin/bash
+data=$(ls ft_seq_sel | sort -n | head -1)
+cat ft_seq_sel/$data | awk '{print $1}' > ID.txt
+echo "Gene" > tag.txt
+cat tag.txt ID.txt > FT_all.txt
+rm ID.txt
+rm tag.txt
+
+while read line;
+do
+cat ft_seq_sel/ftcounts_$line.txt | awk '{print $2}' > ft_exp.txt
+echo $line > tag.txt
+cat tag.txt ft_exp.txt > FT_exp.txt
+paste FT_all.txt FT_exp.txt > ft_new.txt
+mv ft_new.txt FT_all.txt
+rm tag.txt
+rm FT_exp.txt
+rm ft_exp.txt
+done < sample_ID_sel.txt
+

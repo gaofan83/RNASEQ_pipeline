@@ -1,0 +1,5 @@
+while read line;
+do
+igvtools count -z 5 -w 25 -e 200 --includeDuplicates ./$line.hg19Aligned.sortedByCoord.out.bam ./output_tdf_hg19/$line.hg19.tdf hg19
+done < sample_ID.txt
+

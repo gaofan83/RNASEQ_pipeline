@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export PATH=/home/fangao/bowtie2-2.2.3:$PATH
+export PATH=/home/fangao/bowtie-1.0.0:$PATH
+export PATH=/home/fangao/tophat-2.0.12.Linux_x86_64:$PATH
+export PATH=/home/fangao/samtools-0.1.18:$PATH
+export PATH=/home/fangao/cufflinks-2.2.1.Linux_x86_64:$PATH
+
+cuffdiff --use-sample-sheet --library-norm-method geometric --library-type fr-firststrand --max-bundle-frags 1000000000 -o ./cuffdiff -p 16 /home/fangao/refdata-cellranger-hg19-1.2.0/genes/genes.gtf sample_sheet.txt
+

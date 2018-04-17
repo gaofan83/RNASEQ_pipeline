@@ -1,0 +1,13 @@
+sample_name	group
+cuffquant_hg19_180302Tsa_D18-2581/abundances.cxb	E3
+cuffquant_hg19_180302Tsa_D18-2582/abundances.cxb	E3
+cuffquant_hg19_180302Tsa_D18-2583/abundances.cxb	E3
+cuffquant_hg19_180302Tsa_D18-2584/abundances.cxb	E3
+cuffquant_hg19_180302Tsa_D18-2585/abundances.cxb	E3
+cuffquant_hg19_180302Tsa_D18-2586/abundances.cxb	E3
+cuffquant_hg19_180302Tsa_D18-2587/abundances.cxb	E4
+cuffquant_hg19_180302Tsa_D18-2588/abundances.cxb	E4
+cuffquant_hg19_180302Tsa_D18-2589/abundances.cxb	E4
+cuffquant_hg19_180302Tsa_D18-2590/abundances.cxb	E4
+cuffquant_hg19_180302Tsa_D18-2591/abundances.cxb	E4
+cuffquant_hg19_180302Tsa_D18-2592/abundances.cxb	E4

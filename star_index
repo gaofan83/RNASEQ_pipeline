@@ -1,0 +1,7 @@
+STAR --runThreadN 48 \
+--runMode genomeGenerate \
+--genomeDir /home/fangao/Homo_sapiens/UCSC/hg19/STARIndex_149/ \
+--genomeFastaFiles /home/fangao/Homo_sapiens/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa \
+--sjdbGTFfile /home/fangao/Homo_sapiens/UCSC/hg19/Annotation/Archives/archive-2013-03-06-11-23-03/Genes/genes.gtf \
+--sjdbOverhang 149
+
