@@ -3,6 +3,16 @@ This folder contains the pipelines needed for de novo assembly (Trinity), gene q
 
 Input files should be paired-end RNA-Seq data
 
+#de novo assembly with Trinity
+
+#For the sra files downloaded from European Sequence Archive, use the following command to convert to fastq
+
+fastq-dump --defline-seq '@$sn[_$rn]/$ri' --split-files file.sra
+
+#Run the following trinity commands:
+
+./run_trinity
+
 
 1) Gene quantification
 
