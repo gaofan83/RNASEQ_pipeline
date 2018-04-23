@@ -1,0 +1,39 @@
+library("sleuth")
+library("biomaRt")
+library("dplyr")
+library('bindr')
+
+tx2gene <- function(){
+	mart <- biomaRt::useMart(biomart = "ensembl", dataset = "hsapiens_gene_ensembl")
+	t2g <- biomaRt::getBM(attributes = c("ensembl_transcript_id", "ensembl_gene_id", "external_gene_name"), mart = mart)
+	t2g <- dplyr::rename(t2g, target_id = ensembl_transcript_id,
+               ens_gene = ensembl_gene_id, ext_gene = external_gene_name)
+	return(t2g)
+	}
+
+t2g <- tx2gene()
+
+base_dir <- "/home/fangao/rnaseq_test/"
+samples <- paste0("output", 1:12)
+kal_dirs <- sapply(samples, function(id) file.path(base_dir, id))
+
+s2c <- data.frame(path=kal_dirs, sample=samples, condition = rep(c("APOE3", "APOE4"), each=6), stringsAsFactors=FALSE)
+
+so <- sleuth_prep(s2c, target_mapping = t2g, aggregation_column = 'ens_gene')
+#so <- sleuth_prep(s2c)
+so <- sleuth_fit(so, ~condition, 'full')
+#sleuth_wt Wald Test on one specific 'beta' coefficient on every transcript
+so <- sleuth_wt(so, which_beta="conditionAPOE4", which_model = "full") 
+sleuth_table <- sleuth_results(so,"conditionAPOE4",test_type = "wt", which_model = "full", show_all=FALSE)
+sleuth_sig <- sleuth_table[sleuth_table$qval<0.05,]
+write.table(sleuth_sig, file="DEG_APOE4_sig.txt",quote=F,sep="\t",row.names=F)
+
+#sleuth_lrt performs a likelihood ratio test of 2 models for each transcript. If the full model with a condition parameter fits the data significantly better than the reduced model, the transcript is differentially expressed)
+#so <- sleuth_lrt(so, "reduced", "full")
+
+#sleuth_live(so)
+plot_pca(so, color_by="condition", text_labels=T)
+plot_group_density(so, use_filtered = TRUE, units = "est_counts",trans = "log", grouping = "condition", offset = 1) 
+models(so)
+sleuth_table <- sleuth_results(so,'reduced:full', 'lrt',  show_all=FALSE)
+

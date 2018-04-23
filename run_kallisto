@@ -1,0 +1,13 @@
+kallisto quant -i hsGRCh38_kallisto -o output1 --single -l 200 -s 20 -b 100 -t 48 180302Tsa_D18-2581_NA_sequence.fastq.gz
+kallisto quant -i hsGRCh38_kallisto -o output2 --single -l 200 -s 20 -b 100 -t 48 180302Tsa_D18-2582_NA_sequence.fastq.gz
+kallisto quant -i hsGRCh38_kallisto -o output3 --single -l 200 -s 20 -b 100 -t 48 180302Tsa_D18-2583_NA_sequence.fastq.gz
+kallisto quant -i hsGRCh38_kallisto -o output4 --single -l 200 -s 20 -b 100 -t 48 180302Tsa_D18-2584_NA_sequence.fastq.gz
+kallisto quant -i hsGRCh38_kallisto -o output5 --single -l 200 -s 20 -b 100 -t 48 180302Tsa_D18-2585_NA_sequence.fastq.gz
+kallisto quant -i hsGRCh38_kallisto -o output6 --single -l 200 -s 20 -b 100 -t 48 180302Tsa_D18-2586_NA_sequence.fastq.gz
+kallisto quant -i hsGRCh38_kallisto -o output7 --single -l 200 -s 20 -b 100 -t 48 180302Tsa_D18-2587_NA_sequence.fastq.gz
+kallisto quant -i hsGRCh38_kallisto -o output8 --single -l 200 -s 20 -b 100 -t 48 180302Tsa_D18-2588_NA_sequence.fastq.gz
+kallisto quant -i hsGRCh38_kallisto -o output9 --single -l 200 -s 20 -b 100 -t 48 180302Tsa_D18-2589_NA_sequence.fastq.gz
+kallisto quant -i hsGRCh38_kallisto -o output10 --single -l 200 -s 20 -b 100 -t 48 180302Tsa_D18-2590_NA_sequence.fastq.gz
+kallisto quant -i hsGRCh38_kallisto -o output11 --single -l 200 -s 20 -b 100 -t 48 180302Tsa_D18-2591_NA_sequence.fastq.gz
+kallisto quant -i hsGRCh38_kallisto -o output12 --single -l 200 -s 20 -b 100 -t 48 180302Tsa_D18-2592_NA_sequence.fastq.gz
+
