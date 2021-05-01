@@ -14,12 +14,14 @@
 # chr1    12228    12612    1    1    1    0    1    31
 # chr1    14830    14969    2    2    1    75    162    71
 #############################################
-# The output bed will look like such so that score is the number of unique mappers
+# The output bed looks like below so that score is the number of unique mappers
+# the coordinates is the last and first bases of adjacent exons
 # and the name is the original 1-based star junction and if it was annotated
 #############################################
-# chr1    11671    12008    chr1:11672-12009|1    0    +
-# chr1    12227    12611    chr1:12228-12612|1    0    +
-# chr1    14829    14968    chr1:14830-14969|1    75    -
+# chr1    11671    12010    chr1:11672-12009|1    0    +
+# chr1    12227    12613    chr1:12228-12612|1    0    +
+# chr1    14829    14970    chr1:14830-14969|1    75    -
 
 
-awk '{if($4=="1") print $1"\t"$2-1"\t"$3-1"\t"$1":"$2"-"$3"|"$5"\t"$7"\t+"; else print $1"\t"$2-1"\t"$3-1"\t"$1":"$2"-"$3"|"$5"\t"$7"\t-";}' sample_SJ.out.tab > sample_SJ.bed
+awk '{if($4=="1") print $1"\t"$2-1"\t"$3+1"\t"$1":"$2"-"$3"|"$5"\t"$7"\t+"; else print $1"\t"$2-1"\t"$3-1"\t"$1":"$2"-"$3"|"$5"\t"$7"\t-";}' sample_SJ.out.tab > sample_SJ.bed
+#The bed file is subject to bedtools intersect to a list of exon regions for annotation.
