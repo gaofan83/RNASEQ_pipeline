@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mkdir ./ft_out
-mkdir ./ft_seq
+mkdir -p ./ft_out
+mkdir -p ./ft_seq
 while read line;
 do
 ext="Aligned.sortedByCoord.out.bam"
