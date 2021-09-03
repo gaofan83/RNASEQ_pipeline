@@ -1,3 +1,5 @@
+#### For strand-specific data
+
 #!/bin/bash
 while read line;
 do
@@ -14,3 +16,23 @@ file2=$line$ext2
 --outSAMtype BAM SortedByCoordinate
 done < sample_ID.txt
 
+
+
+#### For non-stranded data
+
+#!/bin/bash
+while read line;
+do
+ext1="_L001_R1_001.fastq.gz"
+ext2="_L001_R2_001.fastq.gz"
+file1=$line$ext1
+file2=$line$ext2
+
+/home/fangao/cellranger-2.0.0/STAR/2.5.1b/STAR --runThreadN 48 \
+--genomeDir /home/fangao/refdata-cellranger-hg19-1.2.0/star \
+--readFilesIn ./$file1 ./$file2 \
+--readFilesCommand zcat \
+--outFileNamePrefix $line \
+--outSAMstrandField intronMotif \
+--outSAMtype BAM SortedByCoordinate
+done < sample_ID.txt
