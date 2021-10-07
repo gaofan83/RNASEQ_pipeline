@@ -1,0 +1,2 @@
+~/software/RSEM-1.3.3/rsem-prepare-reference --gtf Gallus_gallus.GRCg6a.95.gtf --bowtie2 --bowtie2-path /home/software/bin \
+	Gallus_gallus.GRCg6a.dna.toplevel.fa rsem_index_galgal6/galgal6_ref
