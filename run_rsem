@@ -1,0 +1,7 @@
+while read line;
+do
+~/software/RSEM-1.3.3/rsem-calculate-expression -p 16 --bowtie2 --bowtie2-path /home/software/bin \
+	--estimate-rspd --append-names --output-genome-bam fastq/${line}_all.fastq.gz \
+	~/reference_genome/Gallus_gallus/Galgal6/rsem_index_galgal6/galgal6_ref rsem/${line}
+done < sample_ID.txt
+
